@@ -1,0 +1,161 @@
+﻿<Window x:Name="HomeWindow" x:Class="RefrigeratorTesting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RefrigeratorTesting"
+        mc:Ignorable="d"
+        Title="Refrigerator Energy Efficiency Testing" MinHeight="768" MinWidth="1366" Width="1366" Height="768" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="/Ref Icon.ico" Closing="HomeWindow_Closing">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate x:Key="RoundedCornerButton" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10px"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10px"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10px"/>
+        </Grid.RowDefinitions>
+
+
+        <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="10" Padding="10" VerticalAlignment="Center" Background="#55B4B0">
+            
+            <TextBlock Text="Refrigerator Energy Efficiency Testing" TextAlignment="Center" FontSize="24" Foreground="White" FontWeight="Bold"/>
+            
+        </Border>
+
+
+
+        <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="10" Background="#34568B"/>
+        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="18" Background="#34568B"/>
+        <Border Grid.Column="0" Grid.Row="15" Grid.ColumnSpan="8" Background="#34568B"/>
+
+
+
+        <Button x:Name="btnTableView" Grid.Column="0" Grid.Row="2" Content="TableView" Click="btnTableView_Click" Template="{DynamicResource RoundedCornerButton}"/>
+
+        <Button x:Name="btnGraphView" Grid.Column="0" Grid.Row="3" Content="GraphView" Click="btnGraphView_Click" Template="{DynamicResource RoundedCornerButton}"/>
+
+        <Button x:Name="btnTestInfo" Grid.Column="0" Grid.Row="4" Content="TestInfo" Click="btnTestInfo_Click" Template="{DynamicResource RoundedCornerButton}"/>
+
+        <Button x:Name="btnRefFreezerReport" Grid.Column="0" Grid.Row="5" Content="Ref-Freezer Report" Click="btnRefFreezerReport_Click" Template="{DynamicResource RoundedCornerButton}"/>
+
+        <Button x:Name="btnRefrigeratorReport" Grid.Column="0" Grid.Row="6" Content="Refrigerator Report" Click="btnRefrigeratorReport_Click" Template="{DynamicResource RoundedCornerButton}"/>
+
+        <Button x:Name="btnFreezerReport" Grid.Column="0" Grid.Row="7" Content="Freezer Report" Click="btnFreezerReport_Click" Template="{DynamicResource RoundedCornerButton}"/>
+
+        <Button x:Name="btnGlobalSettings" Grid.Column="0" Grid.Row="8" Content="Global Settings" Click="btnGlobalSettings_Click" Template="{DynamicResource RoundedCornerButton}"/>
+
+        <Button x:Name="btnExit" Grid.Column="0" Grid.Row="14" Content="Exit" Click="btnExit_Click" Template="{DynamicResource RoundedCornerButton}"/>
+
+        <Border Grid.Column="2" Grid.Row="2" Grid.RowSpan="13" Grid.ColumnSpan="6" Margin="10" Background="#DFCFBE">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1" Content="1" Template="{DynamicResource RoundedCornerButton}"/>
+                <Button Grid.Column="2" Content="2" Template="{DynamicResource RoundedCornerButton}"/>
+                <Button Grid.Column="3" Content="3" Template="{DynamicResource RoundedCornerButton}"/>
+                <Button Grid.Column="4" Content="4" Template="{DynamicResource RoundedCornerButton}"/>
+                <Button Grid.Column="5" Content="5" Template="{DynamicResource RoundedCornerButton}"/>
+                <Button Grid.Column="6" Content="6" Template="{DynamicResource RoundedCornerButton}"/>
+
+                <DataGrid Style="{DynamicResource DataGridStyle}" x:Name="dgDashBoard" Grid.Row="1" Grid.Column="0" Grid.RowSpan="15" Grid.ColumnSpan="7">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="" Width="*"/>
+                        <DataGridTextColumn Header="One" Width="*"/>
+                        <DataGridTextColumn Header="Two" Width="*"/>
+                        <DataGridTextColumn Header="Three" Width="*"/>
+                        <DataGridTextColumn Header="Four" Width="*"/>
+                        <DataGridTextColumn Header="Five" Width="*"/>
+                        <DataGridTextColumn Header="Six" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </Border>
+
+
+    </Grid>
+</Window>
